@@ -1,0 +1,398 @@
+/* ==========================================================================
+   RESET & CORE BASE STYLES
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #f3e8ff 50%, #e0f2fe 100%);
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --primary-pink: #ff85a2;
+  --dark-pink: #f43f5e;
+  --lavender: #b892ff;
+  --baby-blue: #70d6ff;
+  --text-color: #5c4d61;
+  --white: #ffffff;
+  --font-main: 'Fredoka', 'Nunito', sans-serif;
+  --font-handwritten: 'Caveat', cursive;
+  --shadow-soft: 0 10px 25px rgba(255, 133, 162, 0.2);
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-color);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background floating particles */
+#bg-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-particle {
+  position: absolute;
+  font-size: 1.2rem;
+  user-select: none;
+  animation: floatUp linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(105vh) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Audio Button */
+#music-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  background: var(--white);
+  border: 2px solid var(--primary-pink);
+  color: var(--dark-pink);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+#music-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Layout Container */
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* Page Control */
+.page {
+  display: none;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(15px);
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cards & Containers */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 28px;
+  padding: 28px 22px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.kawaii-border {
+  border: 3px solid #ffcad4;
+  outline: 4px dashed #f3e8ff;
+  outline-offset: -8px;
+}
+
+.badge-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: pulseBeat 1.8s infinite;
+}
+
+/* Typography */
+h1 {
+  font-size: 1.8rem;
+  color: #d81b60;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.title-bounce {
+  animation: bounceHeader 2s infinite;
+}
+
+.title-glow {
+  text-shadow: 0 0 12px rgba(255, 133, 162, 0.4);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #7a5c68;
+  margin-bottom: 20px;
+}
+
+.decoration-row {
+  font-size: 1.3rem;
+  margin: 18px 0;
+  letter-spacing: 6px;
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(135deg, #ff85a2 0%, #ff6b8b 100%);
+  color: var(--white);
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 107, 139, 0.35);
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 280px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 3px 10px rgba(255, 107, 139, 0.2);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  width: auto;
+  margin-top: 8px;
+}
+
+.btn-back {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #ffcad4;
+  color: #7a5c68;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Page 2 - Typing Container (FIXED) */
+.typing-container {
+  min-height: 90px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 15px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#typing-text {
+  font-size: 1rem;
+  color: #4a3e4d;
+  line-height: 1.4;
+  width: 100%;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Page 3 - Letter Styling */
+.letter-card {
+  border: 2px solid #fbcfe8;
+  text-align: left;
+  background: #fffdfa;
+}
+
+.handwritten-title {
+  font-family: var(--font-handwritten);
+  font-size: 2.2rem;
+  color: var(--dark-pink);
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.letter-body {
+  font-family: var(--font-handwritten);
+  font-size: 1.45rem;
+  line-height: 1.4;
+  color: #4a3e4d;
+}
+
+.letter-body p {
+  margin-bottom: 12px;
+}
+
+.letter-body strong {
+  color: #d81b60;
+}
+
+.letter-footer {
+  text-align: right;
+  margin-top: 18px;
+  color: var(--dark-pink);
+}
+
+/* Page 4 - Continuous Wishes Stream */
+#page4 {
+  justify-content: flex-start;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.wishes-header {
+  z-index: 10;
+  margin-top: 20px;
+  padding: 18px 15px 12px 15px;
+}
+
+#wishes-stream-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-wish {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid #ffcad4;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #d81b60;
+  box-shadow: 0 4px 12px rgba(255, 133, 162, 0.15);
+  white-space: nowrap;
+  animation: wishFloatUp linear forwards;
+}
+
+@keyframes wishFloatUp {
+  0% {
+    transform: translateY(105vh) scale(0.85);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Page 5 - Final Surprise */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.giant-heart-container {
+  margin: 10px 0;
+}
+
+.giant-heart {
+  font-size: 5rem;
+  animation: pulseHeart 1.4s infinite alternate ease-in-out;
+  filter: drop-shadow(0 6px 12px rgba(244, 63, 94, 0.3));
+}
+
+.final-message {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 15px 0;
+  color: #5c4d61;
+}
+
+.made-with-love {
+  font-size: 0.9rem;
+  color: var(--dark-pink);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.btn-hug {
+  background: linear-gradient(135deg, #b892ff 0%, #ff85a2 100%);
+  box-shadow: 0 6px 18px rgba(184, 146, 255, 0.4);
+}
+
+/* Canvas overlay for particle explosions */
+#effects-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* Keyframe Animations */
+@keyframes bounceHeader {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes pulseBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes pulseHeart {
+  0% { transform: scale(0.95); }
+  100% { transform: scale(1.15); }
+}

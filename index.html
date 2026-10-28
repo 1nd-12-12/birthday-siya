@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Siya! 🎀✨</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background Decorative Particles -->
+  <div id="bg-decorations" aria-hidden="true"></div>
+
+  <!-- Music Toggle Control -->
+  <button id="music-toggle" aria-label="Toggle Background Music">🎵 Play Music</button>
+  <audio id="bg-music" loop preload="auto">
+    <source src="Siya.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Container for Pages -->
+  <main class="app-container">
+
+    <!-- PAGE 1: Welcome Screen -->
+    <section id="page1" class="page active">
+      <div class="card kawaii-border">
+        <div class="badge-icon">🎀</div>
+        <h1 class="title-bounce">Hey Siyaaa! 🎀💗</h1>
+        <p class="subtitle">Someone has a little birthday surprise for you…</p>
+        <div class="decoration-row">✨ 🧸 🌸 🧁 ⭐</div>
+        <button class="btn btn-primary" onclick="goToPage(2)">Open Your Surprise 🎁</button>
+      </div>
+    </section>
+
+    <!-- PAGE 2: Birthday Surprise -->
+    <section id="page2" class="page">
+      <div class="card kawaii-border">
+        <button class="btn-back" onclick="goToPage(1)">← Back</button>
+        <h1 class="title-glow">Happy Birthday, Princess Siya! 👑💖</h1>
+        
+        <div class="typing-container">
+          <p id="typing-text"></p>
+        </div>
+
+        <div class="decoration-row">🎈 🎂 🧸 💖 🎈</div>
+        <button class="btn btn-primary" onclick="goToPage(3)">Read Your Special Wishes 💌</button>
+      </div>
+    </section>
+
+    <!-- PAGE 3: Special Birthday Letter -->
+    <section id="page3" class="page">
+      <div class="card letter-card">
+        <button class="btn-back" onclick="goToPage(2)">← Back</button>
+        <h2 class="handwritten-title">Dearest Siya, 🌸</h2>
+        
+        <div class="letter-body handwritten">
+          <p>Happy Birthday to the brightest, sweetest, and most wonderful person!</p>
+          <p>On your special day, I want to remind you that <strong>you deserve all the happiness in the world</strong>. May your smile always shine brighter than the stars, bringing warmth and light to everyone around you.</p>
+          <p>I hope this year brings you closer to everything you've ever wished for, and that <strong>may all your dreams come true</strong>. May your life be continuously filled with endless love, sweet laughter, great success, and unforgettable, beautiful memories.</p>
+          <p>Never forget how truly <strong>special, precious, and unique</strong> you are. You deserve nothing but the absolute sweetest things life has to offer!</p>
+          <p class="letter-footer">With all the love in the world, <br> Forever & Always 💖</p>
+        </div>
+
+        <button class="btn btn-primary" onclick="goToPage(4)">See Endless Wishes 💗</button>
+      </div>
+    </section>
+
+    <!-- PAGE 4: Nonstop Birthday Wishes -->
+    <section id="page4" class="page">
+      <div class="wishes-header card">
+        <button class="btn-back" onclick="goToPage(3)">← Back</button>
+        <h2>Endless Birthday Love 🌸</h2>
+        <p>Watch the wishes float up just for you!</p>
+        <button class="btn btn-primary btn-sm" onclick="goToPage(5)">Final Surprise 🧸</button>
+      </div>
+      <!-- Floating Messages Stream Container -->
+      <div id="wishes-stream-container"></div>
+    </section>
+
+    <!-- PAGE 5: Cute Final Surprise -->
+    <section id="page5" class="page">
+      <div class="card kawaii-border center-content">
+        <button class="btn-back" onclick="goToPage(4)">← Back</button>
+        
+        <div class="giant-heart-container">
+          <div class="giant-heart">💖</div>
+        </div>
+
+        <h1 class="title-glow">Once Again, Happy Birthday Siya! 🎂💕</h1>
+        
+        <p class="final-message">
+          May your special day be as lovely, magical, and beautiful as your heart. Keep smiling, keep shining, and never stop being your adorable self! 🌷💗
+        </p>
+
+        <p class="made-with-love">Made with lots of love, just for you 💌</p>
+
+        <button class="btn btn-hug" id="hug-btn" onclick="triggerHugExplosion()">One More Hug? 🤗</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Canvas for Confetti & Heart Explosions -->
+  <canvas id="effects-canvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
